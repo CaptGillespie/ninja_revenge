@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ninja Gold</title>
+</head>
+<body>
+    <div class="container">
+        <br>
+        <h1>Ninja Gold</h1>
+        <div class = "gold_amount">&emsp;<h3>Your Gold: {{request.session.myGold}}</h3>
+        </div>
+
+        <div class = "locations">
+            <div class = "farm">
+                <h3>Farm</h3>
+                <h4>(earns 10-20 golds)</h4><br>
+                <form  action="/process_money" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Find Gold!">
+                    <input type="hidden" value= "farm" name="location">
+                </form> 
+
+            </div>
+            <div class = "cave">
+                <h3>Cave</h3>
+                <h4>(earns 5-10 golds)</h4><br>
+                <form  action="/process_money" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Find Gold!">
+                    <input type="hidden" value= "cave" name="location">
+                </form> 
+
+            </div>
+            <div class ="house">
+                <h3>House</h3>
+                <h4>(earns 2-5 golds)</h4><br>
+                <form  action="/process_money" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Find Gold!">
+                    <input type="hidden" value= "house" name="location">
+                </form> 
+
+            </div>
+            <div class = "casino">
+                <h3>Casino</h3>
+                <h4>(earns 0-50 golds)</h4><br>
+                <form  class="gold" action="/process_money" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="Find Gold!">
+                    <input type="hidden" value= "casino" name="location">
+                </form> 
+
+            </div>
+        </div>
+        <h2>Activities</h2>
+        <div class="activities">
+            
+            {% for value in request.session.activities %}
+            <p>{{value}}</p>
+            {% endfor %} </input>
+            
+        </div>
+    </div>
+</body>
+</html>
+
+
+<style>
+.gold{
+    outline: 2px solid black;
+    width: 100px;
+    height: 35px;
+    margin-left: 50px;
+    text-align: center;
+    font-size: 15px;
+    background-color: lightgrey;
+    
+
+}
+.container{
+    margin: 25px;
+    height: 700px;
+    width: 920px;
+    outline: 2px solid black;
+}
+.activities{
+    height: 150px;
+    width: 870px;
+    outline: 2px solid black;
+    margin-left: 20px;
+}
+.find_gold{
+    text-align: center;
+    height: 40px;
+    width: 90px;
+    margin-left: 55px;
+    box-shadow: 2px 2px black;
+}
+.gold_amount{
+    display: inline-block;
+    height: 75px;
+    width: 270px;
+}
+h1{
+    text-align: center;
+}
+h3{
+    text-align: center;
+}
+h4{
+    text-align: center;
+}
+.locations{
+    margin: 10px;
+    height: 250px;
+    width: 900px;
+}
+.farm{
+    margin: 10px;
+    outline: 2px solid black;
+    height: 225px;
+    width: 200px;
+    display: inline-block;
+    display: top;
+}
+.cave{
+    margin: 10px;
+    outline: 2px solid black;
+    height: 225px;
+    width: 200px;
+    display: inline-block;
+    display: top;
+}
+.house{
+    margin: 10px;
+    outline: 2px solid black;
+    height: 225px;
+    width: 200px;
+    display: inline-block;
+}
+.casino{
+    margin: 10px;
+    outline: 2px solid black;
+    height: 225px;
+    width: 200px;
+    display: inline-block;
+
+}
+</style>
